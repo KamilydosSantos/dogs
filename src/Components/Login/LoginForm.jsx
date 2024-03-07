@@ -7,6 +7,7 @@ import { UserContext } from '../../UserContext';
 import styles from './LoginForm.module.css';
 import stylesBtn from '../Forms/Button.module.css';
 import Head from '../Helper/Head';
+import Error from '../Helper/Error';
 
 const LoginForm = () => {
   const userName = useForm();
@@ -30,7 +31,7 @@ const LoginForm = () => {
         <Input label="Usuário" type="text" name="userName" {...userName} />
         <Input label="Senha" type="password" name="password" {...password} />
         {loading ? <Button>Carregando...</Button> : <Button>Entrar</Button>}
-        {error && <p>{error}</p>}
+        <Error error={error && 'Dados incorretos.'} />
       </form>
       <Link className={styles.perdeu} to="/login/perdeu">
         Perdeu a Senha?
